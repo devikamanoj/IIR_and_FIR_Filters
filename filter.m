@@ -24,7 +24,7 @@ fvtool(b,a); % filter frequency response
 % filter the signal
 x_f_iir = filter(b,a,z);
 
-figure; plot(n,x_f_iir); title('Filtered Sinusoidal Signal');
+figure; plot(n,x_f_iir); title('Filtered Sinusoidal Signal of IIR ');
 
 %% FIR Filter Design
 o = 40;
@@ -35,4 +35,4 @@ figure;freqz(b,1,512); % frequency response of FIR LPF filter
 % filter the signal
 x_f_fir = filter(b,1,z);
 
-figure; plot(n,x_f_fir); title('Filtered Sinusoidal Signal');
+figure; plot(n,x_f_fir); title('Filtered Sinusoidal Signal of FIR');
