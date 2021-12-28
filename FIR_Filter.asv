@@ -1,9 +1,0 @@
-% FIR lowpass filter using MATLAB
-clear all;
-clc;
-N=512;
-O=64; %order of the figure
-fc = input("Enter the cut off frequency: ");
-fs = input("Enter sampling frequency: ");
-
-%Normalising 
