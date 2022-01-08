@@ -1,10 +1,11 @@
 % FIR lowpass filter using MATLAB
+
 clear all;
 clc;
-N=512;
-O=64; %order of the figure
-fc = input("Enter the cut off frequency: ");
-fs = input("Enter sampling frequency: ");
+N = 512;
+O = 64; %order of the figure
+fc = 1200;
+fs = 3000;
 
 %Normalising frequency
 Wc=2*(fc/fs);
@@ -21,8 +22,8 @@ clear all;
 clc;
 N=512;
 O=64; %order of the figure
-fn = input("Enter the passband range of frequencies: ");
-fs = input("Enter sampling frequency: ");
+fn = [300 800];
+fs = 3000;
 
 %Normalising frequency
 Wc=2*(fn/fs);
@@ -39,8 +40,8 @@ clear all;
 clc;
 N=512;
 O=64; %order of the figure
-fc = input("Enter the cut off  frequency: ");
-fs = input("Enter sampling frequency: ");
+fc = 1200;
+fs = 3000;
 
 %Normalising frequency
 Wc=2*(fc/fs);
@@ -57,8 +58,8 @@ clear all;
 clc;
 N=512;
 O=64; %order of the figure
-fn = input("Enter the bandstop range of frequencies: ");
-fs = input("Enter sampling frequency: ");
+fn = [300 800];
+fs = 3000;
 
 %Normalising frequency
 Wc=2*(fn/fs);
