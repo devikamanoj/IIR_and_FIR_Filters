@@ -1,43 +1,57 @@
-% FIR lowpass and highpass filter using MATLAB
+disp('Magnitude and Phase response of FIR Filters');
+disp('1 - Magnitude and Phase response of FIR LowPass Filter');
+disp('2 - Magnitude and Phase response of FIR HightPass Filter');
+disp('3 - Magnitude and Phase response of FIR Bandpass Filter');
+disp('4 - Magnitude and Phase response of FIR Bandstop Filter');
+n = input('Choose an option');
 
-clear all;
+% FIR filter using MATLAB
+
 clc;
+O = input('Enter the order of figure');
+fs = input('Enter the sampling frequency');
+
 N = 512;
-O = 64; %order of the figure
-fc = 1200;
-fs = 3000;
 
-%Normalising frequency
-Wc=2*(fc/fs);
-%calculation of filter coefficients
-lowpass_b=fir1(O,Wc,'low');
-highpass_b=fir1(O,Wc,'high');
-%plotting the filter response, returns the frequency response at n sample points
-freqz(lowpass_b,1,N,fs);
-title('Magnitude and Phase response of FIR Lowpass Filter');
-pause(5);
-freqz(highpass_b,1,N,fs);
-title('Magnitude and Phase response of FIR Highpass Filter');
-pause(5);
-%-------------------------------------------------------------------------------------------%
+if (n==1) || (n==2)
+    fc = input('Enter the cutt-off frequency');
+    %Normalising frequency for LowPass/HighPass
+    Wc_lh=2*(fc/fs);
+elseif (n==3) || (n==4)
+    fn = input('Enter the passband range of frequencies');
+    %Normalising frequency for BandStop/BandPass
+    Wc_sp=2*(fn/fs);
+end
 
-% FIR Bandpass and Bandstop filter using MATLAB
-clear all;
-clc;
-N=512;
-O=64; %order of the figure
-fn = [300 800];
-fs = 3000;
+switch n
+    case 1
 
-%Normalising frequency
-Wc=2*(fn/fs);
-%calculation of filter coefficients
-bandpass_b=fir1(O,Wc,'bandpass');
-bandstop_b=fir1(O,Wc,'stop');
-%plotting the filter response, returns the frequency response at n sample points
-freqz(bandpass_b,1,N,fs);
-title('Magnitude and Phase response of FIR Bandpass Filter');
-pause(5);
-freqz(bandstop_b,1,N,fs);
-title('Magnitude and Phase response of FIR BandStop Filter');
-pause(5);
+        %calculation of filter coefficients
+        lowpass_b=fir1(O,Wc_lh,'low');
+        %plotting the filter response, returns the frequency response at n sample points
+        freqz(lowpass_b,1,N,fs);
+        title('Magnitude and Phase response of FIR Lowpass Filter');
+    
+    case 2
+        %calculation of filter coefficients
+        highpass_b=fir1(O,Wc_lh,'high');
+        %plotting the filter response, returns the frequency response at n sample points
+        freqz(highpass_b,1,N,fs);
+        title('Magnitude and Phase response of FIR Highpass Filter');
+
+    case 3
+        %calculation of filter coefficients
+        bandpass_b=fir1(O,Wc_sp,'bandpass');
+        %plotting the filter response, returns the frequency response at n sample points
+        freqz(bandpass_b,1,N,fs);
+        title('Magnitude and Phase response of FIR Bandpass Filter');
+
+    case 4
+        %calculation of filter coefficients
+        bandstop_b=fir1(O,Wc_sp,'stop');
+        freqz(bandstop_b,1,N,fs);
+        title('Magnitude and Phase response of FIR BandStop Filter');
+
+    otherwise
+        disp('Wrong Option')
+end
