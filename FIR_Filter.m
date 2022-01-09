@@ -1,8 +1,8 @@
 disp('Magnitude and Phase response of FIR Filters');
-disp('1 - Magnitude and Phase response of FIR LowPass Filter');
-disp('2 - Magnitude and Phase response of FIR HightPass Filter');
-disp('3 - Magnitude and Phase response of FIR Bandpass Filter');
-disp('4 - Magnitude and Phase response of FIR Bandstop Filter');
+disp('1 - FIR LowPass Filter');
+disp('2 - FIR HightPass Filter');
+disp('3 - FIR Bandpass Filter');
+disp('4 - FIR Bandstop Filter');
 n = input('Choose an option');
 
 % FIR filter using MATLAB
