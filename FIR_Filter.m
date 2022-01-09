@@ -15,9 +15,10 @@ highpass_b=fir1(O,Wc,'high');
 %plotting the filter response, returns the frequency response at n sample points
 freqz(lowpass_b,1,N,fs);
 title('Magnitude and Phase response of FIR Lowpass Filter');
+pause(5);
 freqz(highpass_b,1,N,fs);
 title('Magnitude and Phase response of FIR Highpass Filter');
-
+pause(5);
 %-------------------------------------------------------------------------------------------%
 
 % FIR Bandpass and Bandstop filter using MATLAB
@@ -36,5 +37,7 @@ bandstop_b=fir1(O,Wc,'stop');
 %plotting the filter response, returns the frequency response at n sample points
 freqz(bandpass_b,1,N,fs);
 title('Magnitude and Phase response of FIR Bandpass Filter');
+pause(5);
 freqz(bandstop_b,1,N,fs);
 title('Magnitude and Phase response of FIR BandStop Filter');
+pause(5);
