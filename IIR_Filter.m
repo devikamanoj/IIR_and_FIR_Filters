@@ -1,19 +1,21 @@
 while true
-    disp('Magnitude and Phase response of IIR Filters');
+    disp('    Magnitude and Phase response of IIR Filters');
+    disp('    -------------------------------------------');
+    fprintf('\n') 
     disp('1 - IIR Butterworth Lowpass filter');
     disp('2 - IIR Butterworth Highpass filter');
     disp('3 - IIR Chebyshev Lowpass filter');
     disp('4 - IIR Chebyshev Highpass filter');
     disp('5 - Exit')
-    n = input('Choose an option');
+    n = input('Choose an option: ');
     
     % IIR filter using MATLAB
     
     clc;
     if (n~=5)
-    kp = input('Enter the passband ripple');
-    ks = input('Enter the stop attenuation');
-    fs = input('Enter the sampling frequency');
+    kp = input('Enter the passband ripple: ');
+    ks = input('Enter the stop attenuation: ');
+    fs = input('Enter the sampling frequency: ');
     end
 
     % Normalising filter
@@ -22,39 +24,32 @@ while true
     ws = Fs/(fs/2);
 
     if (n==1) || (n==2)
-        fp = input('Enter the passband frequency');
+        fp = input('Enter the passband frequency: ');
         %To determine the filter order and cut-off frequency
         [N, wc] = buttord(wp, ws, kp, ks);
     elseif (n==3) || (n==4)
-        Fs = input('Enter the stopband frequency');
+        Fs = input('Enter the stopband frequency: ');
         %To determine the filter order and cut-off frequency
         [N, wc] = cheb1ord(wp, ws, kp, ks);   
     end
     
     switch n
-        case 1 % Butterworth Filters
-            disp(' IIR Butterworth Lowpass filter');
-            disp(' -------------------------------------------'); 
+        case 1 % Butterworth Filters 
             [den, num] = butter(N, wc, 'low')% To normalise the cut-off frequency wc
             freqz(den, num, 1000, fs);%plot the response
             title('Magnitude and Phase response of IIR Butterworth Lowpass filter');
     
         case 2 % Butterworth Filters
-            disp(' IIR Butterworth Highpass filter ');
-            disp(' -------------------------------------------');
             [b, a] = butter(N, wc, 'high')
             freqz(b, a, 1000, fs); %plot the response
             title('Magnitude and Phase response of IIR Butterworth Highpass filter');
+            
         case 3 %Chebyshev Filter
-            disp(' IIR Chebyshev Lowpass filter');
-            disp(' -------------------------------------------'); 
             [b, a] = cheby1(N, kp, wc, 'low')   
             freqz(b, a, 1000, fs)    %plot the response
             title('Magnitude and Phase response of IIR Chebyshev Lowpass filter');
     
         case 4 %Chebyshev Filter
-            disp(' IIR Chebyshev Highpass filter ');
-            disp(' -------------------------------------------'); 
             [b, a] = cheby1(N, kp, wc, 'high')   
             freqz(b, a, 1000, fs)    %plot the response
             title('Magnitude and Phase response of IIR Chebyshev Highpass filter');

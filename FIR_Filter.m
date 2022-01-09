@@ -1,28 +1,30 @@
 while true
-    disp('Magnitude and Phase response of FIR Filters');
+    disp('    Magnitude and Phase response of FIR Filters');
+    disp('    -------------------------------------------');
+    fprintf('\n') 
     disp('1 - FIR LowPass Filter');
     disp('2 - FIR HightPass Filter');
     disp('3 - FIR Bandpass Filter');
     disp('4 - FIR Bandstop Filter');
     disp('5 - Exit')
-    n = input('Choose an option');
+    n = input('Choose an option: ');
     
     % FIR filter using MATLAB
     
     clc;
     if (n~=5)
-    O = input('Enter the order of figure');
-    fs = input('Enter the sampling frequency');
+    O = input('Enter the order of figure: ');
+    fs = input('Enter the sampling frequency: ');
     end
     
     N = 512;
     
     if (n==1) || (n==2)
-        fc = input('Enter the cutt-off frequency');
+        fc = input('Enter the cutt-off frequency: ');
         %Normalising frequency for LowPass/HighPass
         Wc_lh=2*(fc/fs);
     elseif (n==3) || (n==4)
-        fn = input('Enter the passband range of frequencies');
+        fn = input('Enter the passband range of frequencies: ');
         %Normalising frequency for BandStop/BandPass
         Wc_sp=2*(fn/fs);
     end
