@@ -1,5 +1,5 @@
 while true
-    disp('Magnitude and Phase response of FIR Filters');
+    disp('Magnitude and Phase response of IIR Filters');
     disp('1 - IIR Butterworth Lowpass filter');
     disp('2 - IIR Butterworth Highpass filter');
     disp('3 - IIR Chebyshev Lowpass filter');
